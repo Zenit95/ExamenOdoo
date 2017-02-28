@@ -10,8 +10,8 @@ class Especie(models.Model):
 class SerVivo(models.Model):
     _name = 'examen.servivo'
     
-    especie_id = fields.Many2one('examen.especies',
-            string="Especie")
+    especie_id = fields.Many2one('examen.especie',
+            string="Especie", required=True)
     
 class Planeta(models.Model):
     _name = 'examen.planeta'
@@ -31,8 +31,8 @@ class Jedi(models.Model):
         ('morado', "Morado"),
     ])
     ultima_vista = fields.Date()
-    planeta = fields.Many2one('examen.planeta', string="Planeta", required=True)
-    midiclorianos = fields.Integer()
+    planeta_id = fields.Many2one('examen.planeta', string="Planeta", required=True)
+    midiclorianos = fields.Integer(string="N midiclorianos")
     nivel = fields.Char(string="Nivel", compute='_calc_nivel')
     
     @api.depends('midiclorianos')
@@ -44,4 +44,19 @@ class Jedi(models.Model):
                 r.nivel = "Caballero Jedi"
             else:
                 r.nivel = "Consejero Jedi"
+                
+class Sith(models.Model):
+    _name = 'examen.sith'
+    _inherit = 'examen.servivo'
     
+    rabia = fields.Integer()
+    afin_oscu = fields.Integer(string="Afinidad con la Oscuridad")
+    color_sable = fields.Selection([
+        ('rojo1', "Rojo"),
+        ('rojo2', "Rojo Oscuro"),
+    ])
+    mandoble = fields.Boolean(string="Usa mandoble", default=False)
+    
+    @api.onchange('rabia')
+    def _nivel_afin_oscu(self):
+        self.afin_oscu = self.rabia * 2

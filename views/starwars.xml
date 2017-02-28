@@ -64,7 +64,7 @@
             <field name="name">planeta.calendar</field>
             <field name="model">examen.planeta</field>
             <field name="arch" type="xml">
-                <calendar string="Planeta Calendar" date_start="fechaDestruccion">
+                <calendar string="Planeta Calendar" date_start="fecha_destruccion">
                     <field name="name"/>
                 </calendar>
             </field>
@@ -75,6 +75,81 @@
             <field name="res_model">examen.planeta</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form,calendar</field>
+        </record>
+        
+        <!--Jedi-->
+        <record model="ir.ui.view" id="jedi_form_view">
+            <field name="name">jedi.form</field>
+            <field name="model">examen.servivo</field>
+            <field name="arch" type="xml">
+                <form string="Jedi Form">
+                    <group>
+                        <field name="color_sable"/>
+                        <field name="ultima_vista"/>
+                        <field name="planeta_id"/>
+                        <field name="midiclorianos"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="jedi_tree_view">
+            <field name="name">jedi.tree</field>
+            <field name="model">examen.servivo</field>
+            <field name="arch" type="xml">
+                <tree string="Jedi Tree">
+                    <field name="color_sable"/>
+                    <field name="ultima_vista"/>
+                    <field name="planeta_id"/>
+                    <field name="midiclorianos"/>
+                    <field name="nivel"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="jedi_list_action">
+            <field name="name">Jedis</field>
+            <field name="res_model">examen.servivo</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <!--Sith-->
+        <record model="ir.ui.view" id="sith_form_view">
+            <field name="name">sith.form</field>
+            <field name="model">examen.sith</field>
+            <field name="arch" type="xml">
+                <form string="Sith Form">
+                    <group>
+                        <field name="especie_id"/>
+                        <field name="rabia"/>
+                        <field name="afin_oscu"/>
+                        <field name="color_sable"/>
+                        <field name="mandoble"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="sith_tree_view">
+            <field name="name">sith.tree</field>
+            <field name="model">examen.sith</field>
+            <field name="arch" type="xml">
+                <tree string="Sith Tree">
+                        <field name="especie_id"/>
+                        <field name="rabia"/>
+                        <field name="afin_oscu"/>
+                        <field name="color_sable"/>
+                        <field name="mandoble"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="sith_list_action">
+            <field name="name">Siths</field>
+            <field name="res_model">examen.sith</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
         </record>
         
         <!--Menu-->
@@ -88,6 +163,10 @@
                 parent="starwars_menu" action="especie_list_action"/>    
         <menuitem id="planetas_menu" name="Planetas" 
                 parent="starwars_menu" action="planeta_list_action"/>    
+        <menuitem id="jedis_menu" name="Jedis" 
+                parent="starwars_menu" action="jedi_list_action"/>    
+        <menuitem id="sith_menu" name="Siths" 
+                parent="starwars_menu" action="sith_list_action"/>       
     
     </data>
 </openerp>
