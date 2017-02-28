@@ -16,7 +16,7 @@ class SerVivo(models.Model):
 class Planeta(models.Model):
     _name = 'examen.planeta'
     
-    name = fields.Char(string="Planeta", required=True)
+    name = fields.Char(string="Planeta")
     distancia = fields.Integer();
     destruido = fields.Boolean(default=False)
     fecha_destruccion = fields.Date()
