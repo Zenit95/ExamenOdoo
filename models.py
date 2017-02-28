@@ -5,13 +5,13 @@ from openerp import fields, models, api
 class Especie(models.Model):
     _name = 'examen.especie'
     
-    name = fields.Char(string="Especie", required=True)
+    name = fields.Char(string="Especie")
     
 class SerVivo(models.Model):
     _name = 'examen.servivo'
     
     especie_id = fields.Many2one('examen.especie',
-            string="Especie", required=True)
+            string="Especie")
     
 class Planeta(models.Model):
     _name = 'examen.planeta'
@@ -31,9 +31,10 @@ class Jedi(models.Model):
         ('morado', "Morado"),
     ])
     ultima_vista = fields.Date()
-    planeta_id = fields.Many2one('examen.planeta', string="Planeta", required=True)
+    planeta_id = fields.Many2one('examen.planeta', string="Planeta")
     midiclorianos = fields.Integer(string="N midiclorianos")
     nivel = fields.Char(string="Nivel", compute='_calc_nivel')
+    sith_id = fields.Many2one('examen.sith', string="Sith que le persiguen")
     
     @api.depends('midiclorianos')
     def _calc_nivel(self):
@@ -45,6 +46,8 @@ class Jedi(models.Model):
             else:
                 r.nivel = "Consejero Jedi"
                 
+    
+    
 class Sith(models.Model):
     _name = 'examen.sith'
     _inherit = 'examen.servivo'
