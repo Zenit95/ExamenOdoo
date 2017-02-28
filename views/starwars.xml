@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+        <!--Especies-->
         <record model="ir.ui.view" id="especie_form_view">
             <field name="name">especie.form</field>
-            <field name="model">examen.especies</field>
+            <field name="model">examen.especie</field>
             <field name="arch" type="xml">
-                <form string="Especies Form">
+                <form string="Especie Form">
                     <group>
                         <field name="name"/>
                     </group>
@@ -13,9 +14,9 @@
             </field>
         </record>
         
-        <record model="ir.ui.view" id="course_tree_view">
-            <field name="name">especies.tree</field>
-            <field name="model">examen.especies</field>
+        <record model="ir.ui.view" id="especie_tree_view">
+            <field name="name">especie.tree</field>
+            <field name="model">examen.especie</field>
             <field name="arch" type="xml">
                 <tree string="Especies Tree">
                     <field name="name"/>
@@ -23,13 +24,60 @@
             </field>
         </record>
         
-        <record model="ir.actions.act_window" id="especies_list_action">
+        <record model="ir.actions.act_window" id="especie_list_action">
             <field name="name">Especies</field>
-            <field name="res_model">examen.especies</field>
+            <field name="res_model">examen.especie</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
         
+        <!--Planetas-->
+        <record model="ir.ui.view" id="planeta_form_view">
+            <field name="name">planeta.form</field>
+            <field name="model">examen.planeta</field>
+            <field name="arch" type="xml">
+                <form string="Planetas Form">
+                    <group>
+                        <field name="name"/>
+                        <field name="distancia"/>
+                        <field name="existe"/>
+                        <field name="fechaDestruccion"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="planeta_tree_view">
+            <field name="name">planeta.tree</field>
+            <field name="model">examen.planeta</field>
+            <field name="arch" type="xml">
+                <tree string="Planeta Tree">
+                    <field name="name"/>
+                    <field name="distancia"/>
+                    <field name="existe"/>
+                    <field name="fechaDestruccion"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="planeta_calendar_view">
+            <field name="name">planeta.calendar</field>
+            <field name="model">examen.planeta</field>
+            <field name="arch" type="xml">
+                <calendar string="Planeta Calendar" date_start="fechaDestruccion">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="planeta_list_action">
+            <field name="name">Planetas</field>
+            <field name="res_model">examen.planeta</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+        </record>
+        
+        <!--Menu-->
         <menuitem id="main_starwars_menu" name="Star Wars"/>
         <menuitem id="starwars_menu" name="Star Wars" 
                 parent="main_starwars_menu"/>
