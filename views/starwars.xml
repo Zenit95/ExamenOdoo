@@ -40,8 +40,8 @@
                     <group>
                         <field name="name"/>
                         <field name="distancia"/>
-                        <field name="existe"/>
-                        <field name="fechaDestruccion"/>
+                        <field name="destruido"/>
+                        <field name="fecha_destruccion"/>
                     </group>
                 </form>
             </field>
@@ -54,8 +54,8 @@
                 <tree string="Planeta Tree">
                     <field name="name"/>
                     <field name="distancia"/>
-                    <field name="existe"/>
-                    <field name="fechaDestruccion"/>
+                    <field name="destruido"/>
+                    <field name="fecha_destruccion"/>
                 </tree>
             </field>
         </record>
@@ -78,11 +78,16 @@
         </record>
         
         <!--Menu-->
+        <!--Parte Superior-->
         <menuitem id="main_starwars_menu" name="Star Wars"/>
+        <!--Parte lateral-->
         <menuitem id="starwars_menu" name="Star Wars" 
                 parent="main_starwars_menu"/>
+        <!--Laterial submenu-->
         <menuitem id="especies_menu" name="Especies" 
-                parent="starwars_menu" action="especies_list_action"/>    
+                parent="starwars_menu" action="especie_list_action"/>    
+        <menuitem id="planetas_menu" name="Planetas" 
+                parent="starwars_menu" action="planeta_list_action"/>    
     
     </data>
 </openerp>
